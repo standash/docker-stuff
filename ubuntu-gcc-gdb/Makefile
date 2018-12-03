@@ -2,7 +2,7 @@ gcc:
 	docker build -t gcc .
 
 run:
-	docker run --rm -it -v ${MOUNT}:/code --cap-add=SYS_PTRACE --security-opt seccomp=unconfined gcc bash 
+	docker run --rm -it -v ${MOUNT}:/code  gcc bash 
 
 clean:
 	docker rmi gcc
