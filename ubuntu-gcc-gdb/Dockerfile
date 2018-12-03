@@ -7,5 +7,4 @@ RUN apt-get update && \
     apt-get install -y gdb && \ 
     apt-get install -y make && \ 
     apt-get install -y vim && \
-    rm -rf /var/lib/apt/lists/* &&\
     mkdir /code
