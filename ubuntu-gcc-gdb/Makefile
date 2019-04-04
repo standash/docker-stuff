@@ -1,4 +1,4 @@
-gcc:
+build:
 	docker build -t gcc .
 
 run:
