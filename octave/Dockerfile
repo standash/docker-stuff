@@ -6,6 +6,7 @@ RUN apt-get update && \
     apt-add-repository ppa:octave/stable && \
     apt-get update && \
     apt-get install -y octave && \
-    mkdir /code
+    mkdir /code && \
+    echo "graphics_toolkit(\"gnuplot\")" >> /root/.octaverc
 
 CMD cd /code && bash
