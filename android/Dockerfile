@@ -39,7 +39,14 @@ RUN ( sleep 4 && while [ 1 ]; do sleep 1; echo y; done ) | sdkmanager "emulator"
 RUN mkdir /usr/local/android-sdk/tools/keymaps && \
     touch /usr/local/android-sdk/tools/keymaps/en-us
 
+# do stuff
 ADD /hardware_configs /hardware_configs
+
+RUN echo 'no' | avdmanager create avd -n emulator1 -f -k 'system-images;android-19;google_apis;x86' -d 'Nexus 5' && \
+    mkdir -p /sdcards && \
+    mksdcard -l e 666M /sdcards/emulator1_sdcard.img && \
+    rm ${ANDROID_SDK_HOME}/.android/avd/emulator1.avd/config.ini && \
+    mv /hardware_configs/config.ini ${ANDROID_SDK_HOME}/.android/avd/emulator1.avd/config.ini 
 
 # add entrypoint
 ADD entrypoint.sh /entrypoint.sh
